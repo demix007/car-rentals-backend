@@ -12,5 +12,6 @@ class UserRepresenter
   end
 
   private
+
   attr_reader :user
 end

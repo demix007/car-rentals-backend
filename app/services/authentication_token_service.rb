@@ -3,7 +3,7 @@ class AuthenticationTokenService
   ALGORITHM_TYPE = 'HS256'.freeze
 
   def self.call(user_id)
-    payload = { user_id: user_id}
+    payload = { user_id: }
     JWT.encode payload, HMAC_SECRET, ALGORITHM_TYPE
   end
 
@@ -13,7 +13,7 @@ class AuthenticationTokenService
     false
   end
 
-  def self.valid_payload(payload)
+  def self.valid_payload(_payload)
     true
   end
 

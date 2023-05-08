@@ -9,8 +9,9 @@ module Api
       def create
         if user
           raise AuthenticateError unless user.authenticate(params.require(:password))
+
           render json: UserRepresenter.new(user).as_json, status: :created
-        else 
+        else
           render json: { error: 'No such user; check the submitted username' }, status: :unauthorized
         end
       end
@@ -21,12 +22,12 @@ module Api
         @user ||= User.find_by(username: params.require(:username))
       end
 
-      def parameter_missing(e)
-        render json: { error: e.message }, status: :unprocessable_entity
+      def parameter_missing(error)
+        render json: { error: error.message }, status: :unprocessable_entity
       end
 
-      def handle_unauthenticated(e)
-        render json: { error: e.message }, status: :unauthorized
+      def handle_unauthenticated(error)
+        render json: { error: error.message }, status: :unauthorized
       end
     end
   end
