@@ -5,6 +5,7 @@ FactoryBot.define do
         photo {Faker::Car.photo}
         price {Faker::Car.price}
         model {Faker::Car.model}
+        user { create(:user) }
     end
 end
   
