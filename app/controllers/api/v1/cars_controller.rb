@@ -1,6 +1,7 @@
 module Api
   module V1
     class CarsController < ApplicationController
+      before_action :authenticate_request!, only: %i[create update destroy]
       before_action :set_car, only: %i[update show destroy]
       # GET /cars
       def index
@@ -10,7 +11,7 @@ module Api
 
       # POST /car
       def create
-        @car = Car.create(car_params)
+        @car = current_user!.cars.create(car_params)
         if @car.save
           render json: CarRepresenter.new(@car).as_json, status: :created
         else
@@ -26,7 +27,11 @@ module Api
       # PUT /cars/:id
       def update
         @car.update(car_params)
-        head :no_content
+        if @car.save
+          render json: CarRepresenter.new(@car).as_json, status: :created
+        else
+          render json: @car.errors, status: :unprocessable_entity
+        end
       end
 
       # DELETE /cars/:id
