@@ -11,7 +11,6 @@ class CarRepresenter
       photo: car.photo,
       price: car.price,
       model: car.model,
-      user: User.find(car.id).name,
       date_added: car.created_at
     }
   end

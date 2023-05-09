@@ -1,6 +1,7 @@
 module Api
   module V1
     class CarsController < ApplicationController
+      before_action :authenticate_request!, only: %i[create update destroy]
       before_action :set_car, only: %i[update show destroy]
       # GET /cars
       def index
