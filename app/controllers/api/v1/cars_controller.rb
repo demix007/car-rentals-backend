@@ -38,14 +38,12 @@ module Api
       private
 
       def car_params
-        params.permit(:name, :description, :photo, :price, :model, :user_id )
+        params.permit(:name, :description, :photo, :price, :model, :user_id)
       end
 
-      def set_car 
+      def set_car
         @car = Car.find(params[:id])
       end
     end
   end
- end
- 
- 
+end

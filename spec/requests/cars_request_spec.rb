@@ -1,5 +1,4 @@
 RSpec.describe 'Cars', type: :request do
-
   let!(:cars) { create_list(:car, 10) }
 
   let(:car_id) { cars.first.id }
@@ -10,7 +9,7 @@ RSpec.describe 'Cars', type: :request do
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
     end
-    
+
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
     end
@@ -43,11 +42,11 @@ RSpec.describe 'Cars', type: :request do
   describe 'POST /cars/:id' do
     let!(:racecar) { create(:category) }
     let(:valid_attributes) do
-      { 
-        name: 'Ferrari', 
-        description: 'A top race car', 
-        photo: 'image url', 
-        price: '25.00', 
+      {
+        name: 'Ferrari',
+        description: 'A top race car',
+        photo: 'image url',
+        price: '25.00',
         model: 'latest model',
         user_id: racecar.id
       }
@@ -100,4 +99,4 @@ RSpec.describe 'Cars', type: :request do
       expect(response).to have_http_status(204)
     end
   end
- end
+end
