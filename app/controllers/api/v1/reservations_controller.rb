@@ -1,6 +1,7 @@
 module Api
     module V1
         class ReservationsController < ApplicationController
+            before_action :authenticate_request!, only: %i[create update destroy]
             before_action :set_reservation, only: %i[update show destroy]
             # GET /reservations
             def index
@@ -10,11 +11,11 @@ module Api
 
             # POST /reservation
             def create
-                @reservation = Reservation.create(reservation_params)
+                @reservation = current_user!.reservations.create(reservation_params)
                 if @reservation.save
-                render json: ReservationRepresenter.new(@reservation).as_json, status: :created
+                  render json: ReservationRepresenter.new(@reservation).as_json, status: :created
                 else
-                render json: @reservation.errors, status: :unprocessable_entity
+                  render json: @reservation.errors, status: :unprocessable_entity
                 end
             end
 
@@ -26,7 +27,11 @@ module Api
             # PUT /reservations/:id
             def update
                 @reservation.update(reservation_params)
-                head :no_content
+                if @reservation.save
+                    render json: ReservationRepresenter.new(@reservation).as_json, status: :created
+                else
+                    render json: @reservation.errors, status: :unprocessable_entity
+                end
             end
 
             # DELETE /reservations/:id
