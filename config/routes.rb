@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get 'users/Authentication'
+  root 'home#index'
   namespace :api do
     namespace :v1 do
       resources :users, only: %i[index create destroy]
