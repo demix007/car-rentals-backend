@@ -10,7 +10,7 @@ class ReservationsRepresenter
         city: reservation.city,
         pick_up: reservation.pick_up,
         return_date: reservation.return_date,
-        car: Car.find(reservation.id).name
+        car: Car.find(reservation.car_id).name
       }
     end
   end
