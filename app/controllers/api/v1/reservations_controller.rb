@@ -3,15 +3,16 @@ module Api
     class ReservationsController < ApplicationController
       before_action :authenticate_request!, only: %i[create update destroy]
       before_action :set_reservation, only: %i[update show destroy]
+
       # GET /reservations
       def index
         @reservations = Reservation.all
         render json: ReservationsRepresenter.new(@reservations).as_json
       end
 
-      # POST /reservation
+      # POST /reservations
       def create
-        @reservation = current_user!.reservations.create(reservation_params)
+        @reservation = @current_user.reservations.new(reservation_params)
         if @reservation.save
           render json: ReservationRepresenter.new(@reservation).as_json, status: :created
         else
@@ -43,7 +44,7 @@ module Api
       private
 
       def reservation_params
-        params.permit(:city, :pick_up, :return_date, :user_id, :car_id)
+        params.require(:reservation).permit(:city, :pick_up, :return_date, :car_id)
       end
 
       def set_reservation
