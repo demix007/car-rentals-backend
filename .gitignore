@@ -8,7 +8,7 @@
 /.bundle
 
 node_modules/
-
+public/assets
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
