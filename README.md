@@ -20,6 +20,7 @@
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Install](#install)
+    - [Setup database](#setup-database)
     - [Usage](#usage)
     - [Run tests](#run-tests)
   - [👥 Authors ](#-authors-)
@@ -108,6 +109,17 @@ Example command:
   bundle install
 ```
 
+### Setup database
+
+Setup database with:
+
+Example command:
+
+```sh
+  rails db:create
+  rails db:migrate
+```
+
 ### Usage
 
 To run the project, execute the following command:
@@ -125,7 +137,7 @@ To run tests, run the following command:
 Example command:
 
 ```sh
-  bin/rails rspec
+  rspec
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
