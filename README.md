@@ -34,7 +34,7 @@
 
 # 📖 Car Rentals Backend <a name="about-project"></a>
 
-**Car Rentals Backend** is a Rails API that serves as database to the [Car Rentals Frontend]() project.
+**Car Rentals Backend** is a Rails API that serves as database to the [Car Rentals Frontend](https://github.com/houdamzari/Cars-Rental-FrontEnd) project.
 
 ## 🛠 Built With <a name="built-with"></a>
 
