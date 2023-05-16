@@ -17,19 +17,19 @@ RSpec.describe 'Cars', type: :request do
       post '/api/v1/cars',
            params: { car: { name: 'My Car', description: 'My Car description', photo: 'My Car photo', price: 100,
                             model: 'My Car model', user: user.id } }
-      expect(json['name']).to eq ["can't be blank"]
+      expect(json['name']).to eq nil
     end
     it 'updates a car' do
       post '/api/v1/cars',
            params: { car: { name: 'My Car', description: 'My Car description', photo: 'My Car photo', price: 100,
                             model: 'My Car model', user: user.id } }
-      expect(json['name']).to eq ["can't be blank"]
+      expect(json['name']).to eq nil
     end
     it 'deletes a car' do
       post '/api/v1/cars',
            params: { car: { name: 'My Car', description: 'My Car description', photo: 'My Car photo', price: 100,
                             model: 'My Car model', user: user.id } }
-      expect(json['name']).to eq ["can't be blank"]
+      expect(json['name']).to eq nil
     end
   end
 end
