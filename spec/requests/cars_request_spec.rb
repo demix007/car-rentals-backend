@@ -11,7 +11,7 @@ RSpec.describe 'Cars', type: :request do
       expect(json).to eq []
     end
   end
-  
+
   describe 'POST /api/v1/cars/:id' do
     let(:user) { create(:user) }
 
